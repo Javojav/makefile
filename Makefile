@@ -9,6 +9,8 @@ EXE	:= #EXEname
 
 VFLAGS	:= -s --leak-check=full --track-origins=yes
 
+SRCS := $(wildcard *.c)
+objs := $(SRCS:%.c=%.o)
 #####################################################
 # .EXE
 #####################################################
