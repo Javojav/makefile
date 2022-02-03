@@ -6,6 +6,7 @@ LDFLAGS=-L./
 LDLIBS=-lname #Excluding lib
 
 EXE	:= #EXEname
+ARGS 	:=
 
 VFLAGS	:= -s --leak-check=full --track-origins=yes
 
@@ -15,7 +16,7 @@ objs := $(SRCS:%.c=%.o)
 # .EXE
 #####################################################
 
-$(EXE) : *.o *.a
+$(EXE) : $(objs) *.a
 	$(CC) -o $@ $(CCFLAGS) $^ $(LDFLAGS) $(LDLIBS) $(LIBS)
 
 #####################################################
@@ -40,7 +41,7 @@ clear:
 	rm -f *.o *.d $(EXE)
 
 run: $(EXE)
-	./$<
+	./$< $(ARGS)
 
 valgrind: $(EXE)
-	valgrind $(VFLAGS) ./$< --log-file=valgrind.log
+	valgrind $(VFLAGS) ./$< $(ARGS) --log-file=valgrind.log
