@@ -1,11 +1,11 @@
-CC		  := gcc
+CC	:= gcc
 CCFLAGS	:= -Wall -pedantic
 
 IFLAGS=-I./
 LDFLAGS=-L./
 LDLIBS=-lname #Excluding lib
 
-EXE		:= #EXEname
+EXE	:= #EXEname
 
 VFLAGS	:= -s --leak-check=full --track-origins=yes
 
